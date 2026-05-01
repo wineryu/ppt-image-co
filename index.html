@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PPT Image First</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="control-panel">
+        <div class="brand-row">
+          <div class="mark">PF</div>
+          <div>
+            <h1>PPT Image First</h1>
+            <p>视觉优先的演示稿分镜工具</p>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>演示主题</span>
+          <textarea id="topicInput" rows="4">为小米百万亿 token 计划准备一个 AI Agent 项目申请，展示 Codex 如何帮助我构建视觉优先的 PPT 创作工具。</textarea>
+        </label>
+
+        <div class="grid-two">
+          <label class="field">
+            <span>听众</span>
+            <select id="audienceInput">
+              <option value="评审">评审</option>
+              <option value="投资人">投资人</option>
+              <option value="学生">学生</option>
+              <option value="产品团队">产品团队</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>页数</span>
+            <input id="countInput" type="number" min="3" max="8" value="5">
+          </label>
+        </div>
+
+        <label class="field">
+          <span>视觉风格</span>
+          <select id="styleInput">
+            <option value="clean-tech">清爽科技</option>
+            <option value="editorial">杂志叙事</option>
+            <option value="product">产品发布</option>
+            <option value="research">研究报告</option>
+          </select>
+        </label>
+
+        <div class="button-row">
+          <button id="generateBtn" class="primary">生成分镜</button>
+          <button id="copyBtn">复制 Markdown</button>
+          <button id="jsonBtn">导出 JSON</button>
+        </div>
+
+        <section class="note-panel" aria-label="project notes">
+          <h2>Agent 工作流</h2>
+          <ol>
+            <li>Codex 读取目标和约束，拆解页面结构。</li>
+            <li>工具生成每页视觉锚点、文案和图像提示词。</li>
+            <li>用户根据截图和导出文档继续迭代。</li>
+          </ol>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="workspace-header">
+          <div>
+            <p class="eyebrow">Storyboard</p>
+            <h2 id="deckTitle">小米百万亿 token 计划申请</h2>
+          </div>
+          <div class="status-pill" id="statusText">5 pages ready</div>
+        </header>
+
+        <section id="slidesGrid" class="slides-grid" aria-live="polite"></section>
+
+        <section class="export-panel">
+          <div>
+            <p class="eyebrow">Export Preview</p>
+            <h2>申请材料摘要</h2>
+          </div>
+          <pre id="markdownPreview"></pre>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
