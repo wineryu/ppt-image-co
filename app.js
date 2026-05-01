@@ -67,6 +67,7 @@ const slidesGrid = document.querySelector("#slidesGrid");
 const markdownPreview = document.querySelector("#markdownPreview");
 const deckTitle = document.querySelector("#deckTitle");
 const statusText = document.querySelector("#statusText");
+const reviewGrid = document.querySelector("#reviewGrid");
 
 let currentDeck = [];
 
@@ -122,6 +123,45 @@ function renderDeck() {
   });
 
   markdownPreview.textContent = toMarkdown();
+  renderReview();
+}
+
+function renderReview() {
+  const totalPromptLength = currentDeck.reduce((sum, slide) => sum + slide.imagePrompt.length, 0);
+  const averagePromptLength = Math.round(totalPromptLength / currentDeck.length);
+  const uniqueTags = new Set(currentDeck.flatMap((slide) => slide.tags));
+  const copyLength = currentDeck.reduce((sum, slide) => sum + slide.copy.length, 0);
+  const densityScore = copyLength / currentDeck.length < 48 ? "低" : "中";
+  const checks = [
+    {
+      label: "页面数量",
+      value: currentDeck.length,
+      note: "适合申请材料截图和短演示。"
+    },
+    {
+      label: "提示词均长",
+      value: averagePromptLength,
+      note: "每页包含风格、主题和视觉目标。"
+    },
+    {
+      label: "标签覆盖",
+      value: uniqueTags.size,
+      note: "用于追踪痛点、流程、证据和路线。"
+    },
+    {
+      label: "文字密度",
+      value: densityScore,
+      note: "控制页面文案，避免文字堆叠。"
+    }
+  ];
+
+  reviewGrid.innerHTML = checks.map((check) => `
+    <div class="review-item">
+      <strong>${check.value}</strong>
+      <span>${check.label}</span>
+      <span>${check.note}</span>
+    </div>
+  `).join("");
 }
 
 function toMarkdown() {

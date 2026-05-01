@@ -9,6 +9,7 @@ The app turns a topic into:
 - slide copy
 - image generation prompts
 - Markdown and JSON exports
+- lightweight quality review metrics
 
 ## Why This Exists
 
@@ -35,6 +36,7 @@ This project is designed to show how an AI coding agent can participate in a com
 - create the product structure
 - implement the static UI
 - generate reusable storyboard content
+- review prompt length, text density, and tag coverage
 - provide export formats for later automation
 - prepare application materials and evidence
 

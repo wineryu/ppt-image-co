@@ -297,7 +297,8 @@ select:focus {
   color: var(--ink);
 }
 
-.export-panel {
+.export-panel,
+.review-panel {
   margin-top: 24px;
   border: 1px solid var(--line);
   background: #fffdf8;
@@ -305,8 +306,35 @@ select:focus {
   box-shadow: var(--shadow);
 }
 
-.export-panel h2 {
+.export-panel h2,
+.review-panel h2 {
   font-size: 22px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.review-item {
+  border: 1px solid var(--line);
+  padding: 14px;
+  background: #fffaf1;
+}
+
+.review-item strong {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.review-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 pre {
